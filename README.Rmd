@@ -1,0 +1,61 @@
+---
+title: "README"
+author: "Jack Blumenau"
+date: "09/08/2019"
+output: md_document
+---
+# The House of Commons Speech Database, 1979 -- 2019
+
+This repository holds links to and explanations of a database of speeches delivered in the UK House of Commons between 3rd May 1979 and 5th November 2019. This data was compiled as an output of ESRC grant number ES/N016297/1.
+
+## Download
+
+You can download the data as an XXXX file from this permanent hosting site.
+
+## Overview
+
+The dataset consists of individual utterances made in the UK House of Commons between 1979 and 2019. It also includes separate `csv` files with some meta data for Members of Parliament during this period.
+
+## Data sources
+
+- Speech data comes from XXX. The raw data includes 2,891,225 speeches
+- Data on roles that MPs held in government, opposition, and in committee comes from XXX
+- Data on election results comes from XXX
+
+## Codebook
+
+The following files and variables are included in the database.
+
+### `speeches_19XX.csv`
+
+These files include all speeches made in the House of Commons in the space of a calandar year. In each file, the following variables are included:
+
+|Variable Name|Description|Source|
+|:----------|:---------------------------|--------|
+|`speech_id`|Unique ID for speech|
+|`person_id`| The MP's unique identifier (corresponds to IDs used in [TheyWorkForYou](https://www.theyworkforyou.com/api/docs/getPerson))|TheyWorkForYou/mySociety|
+|`mnis_person_id`| The MP's unique identifier ||
+|`name`| |
+|`debate_id`| |
+|`subdebate_id`| |
+|`debate_title`||
+|`body`| Text of speech|
+|`date`| Date|
+|`hpos`| |
+|`gender`| |
+|`days_in_house`| |
+|`party`| |
+|`party_short`| |
+|`date_of_birth`| |
+|`n_words`| |
+
+
+### `mps.csv`
+
+A dataset of all MPs to have served in the Commons from 1979-2019.
+
+|Variable Name|Description|Source|
+|:----------|:---------------------------|--------|
+|`speech_id`|Unique ID for speech|
+
+### `mps.csv`
