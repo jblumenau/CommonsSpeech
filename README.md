@@ -1,19 +1,28 @@
 The House of Commons Speech Database, 1979 – 2019
 =================================================
 
+Overview
+--------
+
 This repository holds links to and explanations of a database of
 speeches delivered in the UK House of Commons between 3rd May 1979 and
 5th November 2019. This data was compiled as an output of ESRC grant
-number ES/N016297/1.
+number ES/N016297/1, which was for a project entitled “Measuring
+Political Debate: Responsiveness, Influence, and Rhetoric in
+Parliamentary Texts”.
 
-The dataset consists of individual utterances made in the UK House of
-Commons between 1979 and 2019. You can download the data as a series of
-`.csv` files from this permanent hosting site.
+The dataset consists of speeches made in the UK House of Commons between
+1979 and 2019. The full data includes over 2 million individual
+utterances, and you can download the data as a series of yearly `.csv`
+files from UK data services permanent hosting site. The data is
+available at [this
+page](https://reshare.ukdataservice.ac.uk/cgi/users/home?screen=EPrint::Edit&eprintid=854292&stage=award_details#t).
 
 Data sources
 ------------
 
--   Speech data comes from TheyWorkForYou.com
+-   Speech data comes from TheyWorkForYou.com as accessed via the
+    [twfyR](https://github.com/jblumenau/twfyr) package
 -   Data on roles that MPs held in government, opposition, and in
     committee comes from the [Members Name Data
     Platform](http://data.parliament.uk/membersdataplatform/memberquery.aspx)
@@ -83,72 +92,40 @@ are included:
 <td style="text-align: left;">Gender of the MP</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><code>house_start</code></td>
-<td style="text-align: left;">DELETE</td>
-</tr>
-<tr class="even">
 <td style="text-align: left;"><code>days_in_house</code></td>
 <td style="text-align: left;">Number of days that the MP had been an MP at the time of giving the speech</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;"><code>party</code></td>
 <td style="text-align: left;">Party of the MP</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;"><code>party_short</code></td>
 <td style="text-align: left;">Party of the MP (recoded)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;"><code>government_party_mp</code></td>
 <td style="text-align: left;">Indicator for whether the MP was a member of a current governing party</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;"><code>epobject_id</code></td>
 <td style="text-align: left;">Unique identifier for speech</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;"><code>section_id</code></td>
 <td style="text-align: left;">Debate identifier</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;"><code>subsection_id</code></td>
 <td style="text-align: left;">Sub-debate identifier</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;"><code>hpos</code></td>
 <td style="text-align: left;">Position in debate of speech</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;"><code>hdate</code></td>
 <td style="text-align: left;">Date of speech</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>htime</code></td>
-<td style="text-align: left;">DELETE</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>yearmon</code></td>
-<td style="text-align: left;">DELETE</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>year</code></td>
-<td style="text-align: left;">DELETE</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>parliamentary_term</code></td>
-<td style="text-align: left;">DELETE</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>session</code></td>
-<td style="text-align: left;">DELETE</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>source_url</code></td>
-<td style="text-align: left;">DELETE</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>colnum</code></td>
-<td style="text-align: left;">DELETE</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><code>body</code></td>
@@ -207,24 +184,16 @@ are included:
 <td style="text-align: left;">Indicator for whether an MP currently holds any committee assignment</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><code>committee_type_assignment</code></td>
-<td style="text-align: left;">DELETE</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;"><code>committee_chair_nameX</code></td>
 <td style="text-align: left;">Name of the committee (if any) on which the MP is currently Chair. MPs sometimes Chair more than one committee, hence the indexing.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;"><code>committee_chair_type_X</code></td>
 <td style="text-align: left;">Type of the committee indicated in <code>committee_chair_nameX</code></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;"><code>is_committee_chair</code></td>
 <td style="text-align: left;">Indicator for whether the MP is currently Chair of a committee</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>committee_chair_type_assignment</code></td>
-<td style="text-align: left;">DELETE</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><code>speaker_role</code></td>
@@ -241,10 +210,6 @@ are included:
 <tr class="even">
 <td style="text-align: left;"><code>pct_XXX</code></td>
 <td style="text-align: left;">The percentage of the vote won by the relevant party at the last election in the relevant MP’s constituency (does not include by-election results)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>margin</code></td>
-<td style="text-align: left;">DELETE</td>
 </tr>
 </tbody>
 </table>
