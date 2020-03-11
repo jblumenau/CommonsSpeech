@@ -4,58 +4,71 @@ author: "Jack Blumenau"
 date: "09/08/2019"
 output: md_document
 ---
+
 # The House of Commons Speech Database, 1979 -- 2019
 
-This repository holds links to and explanations of a database of speeches delivered in the UK House of Commons between 3rd May 1979 and 5th November 2019. This data was compiled as an output of ESRC grant number ES/N016297/1.
+```{r, echo = FALSE}
 
-## Download
+tmp <- read.csv("out/1979.csv")
 
-You can download the data as an XXXX file from this permanent hosting site.
+```
 
 ## Overview
 
-The dataset consists of individual utterances made in the UK House of Commons between 1979 and 2019. It also includes separate `csv` files with some meta data for Members of Parliament during this period.
+This repository holds links to and explanations of a database of speeches delivered in the UK House of Commons between 3rd May 1979 and 5th November 2019. This data was compiled as an output of ESRC grant number ES/N016297/1, which was for a project entitled "Measuring Political Debate: Responsiveness, Influence, and Rhetoric in Parliamentary Texts".
+
+The dataset consists of speeches made in the UK House of Commons between 1979 and 2019. The full data includes over 2 million individual utterances, and you can download the data as a series of yearly  `.csv` files from UK data services permanent hosting site. The data is available at [this page](https://reshare.ukdataservice.ac.uk/cgi/users/home?screen=EPrint::Edit&eprintid=854292&stage=award_details#t).
+
 
 ## Data sources
 
-- Speech data comes from XXX. The raw data includes 2,891,225 speeches
-- Data on roles that MPs held in government, opposition, and in committee comes from XXX
-- Data on election results comes from XXX
+- Speech data comes from TheyWorkForYou.com as accessed via the [twfyR](https://github.com/jblumenau/twfyr) package
+- Data on roles that MPs held in government, opposition, and in committee comes from the [Members Name Data Platform](http://data.parliament.uk/membersdataplatform/memberquery.aspx) and the [Parliamentary Data Platform](https://beta.parliament.uk/) as accessed via the [pdpy](https://github.com/olihawkins/pdpy) package
+- Data on election results comes from [www.electoralcalculus.co.uk](http://www.electoralcalculus.co.uk)
 
 ## Codebook
 
-The following files and variables are included in the database.
-
-### `speeches_19XX.csv`
-
-These files include all speeches made in the House of Commons in the space of a calandar year. In each file, the following variables are included:
+Each file in the data include all speeches made in the House of Commons in the space of a calandar year. In each file, the following variables are included:
 
 |Variable Name|Description|Source|
-|:----------|:---------------------------|--------|
-|`speech_id`|Unique ID for speech|
-|`person_id`| The MP's unique identifier (corresponds to IDs used in [TheyWorkForYou](https://www.theyworkforyou.com/api/docs/getPerson))|TheyWorkForYou/mySociety|
-|`mnis_person_id`| The MP's unique identifier ||
-|`name`| |
-|`debate_id`| |
-|`subdebate_id`| |
-|`debate_title`||
-|`body`| Text of speech|
-|`date`| Date|
-|`hpos`| |
-|`gender`| |
-|`days_in_house`| |
-|`party`| |
-|`party_short`| |
-|`date_of_birth`| |
-|`n_words`| |
-
-
-### `mps.csv`
-
-A dataset of all MPs to have served in the Commons from 1979-2019.
-
-|Variable Name|Description|Source|
-|:----------|:---------------------------|--------|
-|`speech_id`|Unique ID for speech|
-
-### `mps.csv`
+|:----------|:---------------------------|
+|`person_id`| The MP's unique identifier (corresponds to IDs used in [TheyWorkForYou](https://www.theyworkforyou.com/api/docs/getPerson))|
+|`mnis_person_id`| An alternative MP identifier (corresponds to IDs used in the [Members Name Information Service](http://data.parliament.uk/membersdataplatform/memberquery.aspx)) |
+|`member_id`| A unique identifier for each MP's term in parliament (may be multiple `member_id`s for each `person_id`) |
+|`name`| Name of the MP |
+|`constituency`| Constituency of the MP |
+|`entered_house`| Date on which the MP entered the House of Commons |
+|`left_house`| Date on which the MP left the House of Commons |
+|`date_of_birth`| Birthday of the MP |
+|`age_years`| Age of the MP in years |
+|`gender`| Gender of the MP |
+|`days_in_house`| Number of days that the MP had been an MP at the time of giving the speech |
+|`party`| Party of the MP |
+|`party_short`| Party of the MP (recoded)|
+|`government_party_mp`| Indicator for whether the MP was a member of a current governing party |
+|`epobject_id`| Unique identifier for speech |
+|`section_id` | Debate identifier |
+|`subsection_id` | Sub-debate identifier |
+|`hpos` | Position in debate of speech |
+|`hdate` | Date of speech |
+|`body`|Text of speech|
+|`parent`|Title of debate|
+|`question_time` | Indicator for whether the debate is a Question Time session |
+|`n_words`| Number of words in speech |
+|`government_role_X`| Whether the MP currently holds a government role (and whether the role requires attending cabinet/is paid or unpaid). MPs sometimes hold more than one role, hence the indexing.|
+|`attends_cabinet`|Indicator for whether an MP currently holds a government role that requires them to attend cabinet|
+|`government_ministerial_position_X`| Name of the government role held by the MP indicated in `government_role_X`.|
+|`holds_government_position`|Indicator for whether an MP currently holds any government role |
+|`opposition_role_X`| Whether the MP currently holds an opposition role (and whether the role requires attending shadow cabinet/is paid or unpaid). MPs sometimes hold more than one role, hence the indexing |
+|`opposition_ministerial_position_X`| Name of the opposition role held by the MP indicated in `opposition_role_X`.|
+|`holds_opposition_position`|Indicator for whether an MP currently holds any opposition role |
+|`committee_name_X`| Name of the committee (if any) on which the MP currently serves. MPs sometimes hold more than one committee position, hence the indexing. |
+|`committee_type_X`| Type of committee indicated in `committee_name_X` |
+|`has_committee_assignment`| Indicator for whether an MP currently holds any committee assignment |
+|`committee_chair_nameX`| Name of the committee (if any) on which the MP is currently Chair. MPs sometimes Chair more than one committee, hence the indexing. |
+|`committee_chair_type_X`| Type of the committee indicated in `committee_chair_nameX` |
+|`is_committee_chair`| Indicator for whether the MP is currently Chair of a committee |
+|`speaker_role`| The type of speaker role held by an MP (if any)|
+|`is_speaker`| Indicator for whether the MP currently holds one of the Speaker or Deputy Speaker roles in the Commons|
+|`votes_XXX`|The number of votes won by the relevant party at the last election in the relevant MP's constituency (does not include by-election results)|
+|`pct_XXX`|The percentage of the vote won by the relevant party at the last election in the relevant MP's constituency (does not include by-election results)|
